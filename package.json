@@ -69,7 +69,6 @@
     "html-webpack-plugin": "^2.24.1",
     "json-loader": "^0.5.4",
     "rax-hot-loader": "latest",
-    "rax-webpack-plugin": "latest",
     "stylesheet-loader": "latest",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
