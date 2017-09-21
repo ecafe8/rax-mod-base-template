@@ -29,3 +29,7 @@ sinx build
 1. 顶部的 tab区域
 fixed 定位可以遮上去，但是点击 tab 的区域会穿透，而且盖在 tab 上的 fixed 元素本身的点击事件也不会响应
 Android 的 tab 栏高度是 98rem, iOS 是 90rem
+
+
+2. 视频自动播放，安卓有兼容问题，大小写都加上。
+autoplay={true}  autoPlay={true}
