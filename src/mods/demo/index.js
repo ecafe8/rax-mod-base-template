@@ -34,11 +34,11 @@ export default class developingClassNameApp extends Component {
   }
 
   getItemsData(cb = () => {}) {
-    const { mds } = this.state;
+    const { mds, gdc } = this.state;
     const { moduleData: { goods = '' } } = mds;  // 557954303641
     const ownerId = '385132127'; // '1928865133'; // gdc.userId  385132127//安踏
     const data = {
-      ownerId,
+      ownerId: gdc.userId,
       isAuto: !goods.length,
       catId: 0,
       itemIds: goods,
