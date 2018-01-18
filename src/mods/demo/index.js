@@ -31,8 +31,40 @@ export default class developingClassNameApp extends Component {
     console.log('componentDidMount');
     console.log('this.props', this.props);
     this.getItemsData();
+    this.getCouponData();
   }
 
+  /**
+   * 获取优惠券数据
+   */
+  getCouponData() {
+    const { gdc } = this.state;
+    console.log('mtop.data.coupon.get request =====');
+    this.pageUtils.Mtop.request({
+      api: 'mtop.data.coupon.get',
+      v: '1.0',
+      data: {
+        'sellerId': gdc.userId,
+        'pageId': gdc.pageId,
+      },
+      ecode: 0,   // 必须
+      type: 'GET',
+      timeout: 3000 // 非必须。接口超时设置，默认为20000ms
+    }, (ret) => {
+      console.log('mtop.data.coupon.get resp ==== ', resp);
+      this.setState({
+        users: `ret ===${JSON.stringify(ret)}`,
+      });
+
+    }, (err) => {
+      this.setState({
+        users: `err ===${JSON.stringify(err)}`,
+      });
+    });
+  }
+  /**
+   * 获取店铺数据
+   */
   getItemsData(cb = () => {}) {
     const { mds, gdc } = this.state;
     const { moduleData: { goods = '' } } = mds;  // 557954303641
@@ -54,9 +86,9 @@ export default class developingClassNameApp extends Component {
       ecode: 0,   // 必须
       type: 'GET',
     };
-    console.log('Mtop request =====');
+    console.log('mtop.data.item.get request =====');
     this.pageUtils.Mtop.request(params, resp => {
-      console.log('Mtop resp ==== ', resp);
+      console.log('mtop.data.item.get resp ==== ', resp);
       const msg = (resp && resp.ret ? resp.ret[0] : '').split('::');
       if(msg[0] === 'SUCCESS'){
         // do something...
